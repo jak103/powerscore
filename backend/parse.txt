@@ -1,0 +1,30 @@
+02 STX
+74 - t
+ba30b03a - Game time
+31 Period
+3434  Home score
+3237 Away score
+3a Home timeout
+3a Away timeout 
+3a Home fouls
+3a Away fouls
+53 - S
+30 - Home possession/bonus
+31 - Away possession/bonus
+3330
+34303a3a3a3a3a3a3a3a3a3a3a36b0b5383a3a3a3a3a385a0d
+35333a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a38740d
+
+
+0274b2b4b535313a303a303a3a3a3a533330
+3a35 - Home Shots on goal
+3a30 - Away shots on goal
+3a31b2b0333a34b5b0363a3a3a3a3a3a3a3a3a3a38470d
+
+0274
+b2b4b535
+31
+3a30
+3a30
+3a3a3a3a53
+33303a303a303a31b2b0333a34b5b0363a3a3a3a3a3a3a3a3a3a38420d

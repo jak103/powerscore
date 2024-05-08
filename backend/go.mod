@@ -1,6 +1,6 @@
-module github.com/jak103/powerscore
+module scoreboard
 
-go 1.22.2
+go 1.22.1
 
 require (
 	github.com/creack/goselect v0.1.2 // indirect
