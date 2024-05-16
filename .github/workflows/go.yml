@@ -22,9 +22,9 @@ jobs:
         go-version-file: ./backend/go.mod
 
     - name: Build
-      run: go build -v ./..
+      run: go build -v ./
       working-directory: ./backend
 
     - name: Test
-      run: go test -v ./..
+      run: go test -v ./
       working-directory: ./backend
