@@ -3,7 +3,7 @@ import Timer from './Timer.vue';
 import Period from './Period.vue';
 import { reactive } from 'vue';
 
-const state = reactive({period: 3}) //TODO: where does the period come from?
+const state = reactive({period: 3});
 
 </script>
 

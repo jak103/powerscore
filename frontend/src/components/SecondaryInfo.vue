@@ -27,7 +27,7 @@ const state = reactive({
   homeShotsOnGoal: 30,
   awayShotsOnGoal: 24
 })
-//TODO: where do penalties and shots on goal come from?
+
 </script>
 
 <template>

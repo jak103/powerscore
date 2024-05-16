@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
-const state = reactive({time: 5.04}) //TODO: where does the time come from?
+const state = reactive({time: 5.04});
 </script>
 
 <template>
