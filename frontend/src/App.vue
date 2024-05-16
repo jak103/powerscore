@@ -1,5 +1,23 @@
 <script setup lang="ts">
 import Scoreboard from './components/Scoreboard.vue';
+import NotFound from './NotFound.vue';
+import { ref, computed} from 'vue';
+
+const routes = {
+  '/scoreboard': Scoreboard,
+}
+
+const currentPath = ref(window.location.hash);
+
+window.addEventListener('hashchange', () => {
+  currentPath.value = window.location.hash
+});
+
+const currentView = computed(() => {
+  //@ts-ignore routes[<string>] does not match literals provided above. That is OK because of the NotFound option.
+  return routes[currentPath.value.slice(1) || '/'] || NotFound
+})
+
 </script>
 
 <template>
@@ -7,7 +25,7 @@ import Scoreboard from './components/Scoreboard.vue';
   </header>
 
   <main>
-    <Scoreboard/>
+    <component :is=currentView />
   </main>
 </template>
 
