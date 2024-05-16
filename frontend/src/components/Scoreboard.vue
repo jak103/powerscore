@@ -4,8 +4,10 @@ import SecondaryInfo from './SecondaryInfo.vue';
 </script>
 
 <template>
-  <PrimaryInfo/>
-  <SecondaryInfo/>
+  <div class="powerscore">
+    <PrimaryInfo/>
+    <SecondaryInfo/>
+  </div>
 </template>
 
 <style scoped>
