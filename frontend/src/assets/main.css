@@ -3,6 +3,11 @@
   src: url("./alarm-clock.ttf");
 }
 
+@font-face {
+  font-family: "Teko";
+  src: url("./Teko-VariableFont_wght.ttf");
+}
+
 .powerscore {
   height: 100vh;
   background: #181818;
