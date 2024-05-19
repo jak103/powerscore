@@ -147,3 +147,7 @@ text-transform: uppercase;
   font-size: 4vw;
   padding-bottom: 4vw;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
