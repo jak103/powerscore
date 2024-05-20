@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import Scoreboard from './components/Scoreboard.vue';
+import ScoreKeeper from "@/components/scorekeeping/ScoreKeeper.vue";
 import NotFound from './NotFound.vue';
 import { ref, computed} from 'vue';
 
 const routes = {
   '/scoreboard': Scoreboard,
+  '/scorekeeper': ScoreKeeper,
 }
 
 const currentPath = ref(window.location.hash);
