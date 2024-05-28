@@ -4,8 +4,15 @@
 <template>
   <main>
     <p>404 page not found.</p>
-    <a href="#/scoreboard">View The Scoreboard</a>
-    <a href="#/scorekeeper">View Score Keeper Workspace</a>
+    <div>
+      <a href="#/scoreboard">View The Scoreboard</a>
+    </div>
+    <div>
+      <a href="#/scorekeeper">View Score Keeper Workspace</a>
+    </div>
+    <div>
+      <a href="#/entryboard">View the Entryboard locker-room assignments</a>
+    </div>
   </main>
 </template>
 
