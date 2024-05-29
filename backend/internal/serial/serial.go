@@ -8,23 +8,12 @@ import (
 	"log"
 	"strings"
 
-	"github.com/jak103/powerscore/internal/models"
+	"scoreboard/internal/models"
+
 	"go.bug.st/serial"
 )
 
-func Start(ctx context.Context, output chan *models.ScoreboardData) error {
-	mode := &serial.Mode{
-		BaudRate: 9600,
-		DataBits: 8,
-		Parity:   serial.NoParity,
-		StopBits: serial.OneStopBit,
-	}
-	port, err := serial.Open("COM4", mode)
-	if err != nil {
-		log.Fatal(err)
-		return err
-	}
-
+func Start(ctx context.Context, output chan *models.ScoreboardData, port serial.Port) error {
 	dataChannel := make(chan []byte)
 
 	go readSerial(ctx, port, dataChannel)
@@ -54,7 +43,6 @@ func readSerial(ctx context.Context, port serial.Port, data chan []byte) {
 				fmt.Printf("Failed to read from serial port: %v\n", err)
 				return
 			}
-
 			data <- buff[:n]
 		}
 	}
@@ -62,7 +50,7 @@ func readSerial(ctx context.Context, port serial.Port, data chan []byte) {
 
 func processPackets(ctx context.Context, dataChannel chan []byte, scoreboardDataChannel chan *models.ScoreboardData) {
 	prefix := []byte{0x02, 0x74}
-	buffer := make([]byte, 255)
+	buffer := make([]byte, 0)
 
 	for {
 		select {
@@ -70,18 +58,20 @@ func processPackets(ctx context.Context, dataChannel chan []byte, scoreboardData
 			fmt.Println("Closing packet processor")
 			return
 		default:
-			data := <-dataChannel
+			data := <-dataChannel //This is blocking.
 			buffer = append(buffer, data...)
-
-			if bytes.HasPrefix(buffer, prefix) && len(buffer) > 45 {
+			if bytes.HasPrefix(buffer, prefix) && len(buffer) >= 45 {
+				log.Printf("serial.go -- parsing packet '%s'", string(buffer[:45]))
 				scoreboardData := parsePacket(buffer[:45])
 				if scoreboardData != nil {
 					scoreboardDataChannel <- scoreboardData
 				}
-
 				buffer = buffer[45:]
-			} else if len(buffer) > 45 {
-				buffer = buffer[1:]
+			} else {
+				//Trim from the front until the prefix is found or the buffer is empty.
+				for len(buffer) > 0 && !bytes.HasPrefix(buffer, prefix) {
+					buffer = buffer[1:]
+				}
 			}
 		}
 	}
@@ -130,7 +120,7 @@ func parseGameTime(data []byte) (string, bool) {
 
 	min := strings.ReplaceAll(string(data[:2]), ":", "")
 	sec := strings.ReplaceAll(string(data[2:]), ":", "")
-	time := fmt.Sprintf("%s%s%s", min, sep, sec)
+	time := fmt.Sprintf("%s%s%s\n", min, sep, sec)
 
 	return time, paused
 }
@@ -149,7 +139,7 @@ func printPacket(packet []byte, places ...int) {
 	packetStr := hex.EncodeToString(packet)
 	for i, place := range places {
 		pos := (place * 2) + i
-		packetStr = fmt.Sprintf("%s %s", packetStr[:pos], packetStr[pos:])
+		packetStr = fmt.Sprintf("%s %s ", packetStr[:pos], packetStr[pos:])
 	}
 	fmt.Println(packetStr)
 }
