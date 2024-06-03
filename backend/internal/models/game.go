@@ -1,6 +1,9 @@
 package models
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type Penalty struct {
 	PlayerNumber string
@@ -8,7 +11,7 @@ type Penalty struct {
 }
 
 func (p Penalty) String() string {
-	return fmt.Sprintf("Penalty: {PlayerNumber: %s, Time: %s}", p.PlayerNumber, p.Time)
+	return fmt.Sprintf("Penalty: {PlayerNumber: %s, Time: %s}", strings.Replace(p.PlayerNumber, ":", "", -1), p.Time)
 }
 
 type TeamData struct {
@@ -31,7 +34,7 @@ type ScoreboardData struct {
 
 
 func (s ScoreboardData) String() string {
-	return fmt.Sprintf("ScoreboardData: {GameTime: %s, Paused: %t, Period: %s, Home: %s, Away: %s}", s.GameTime, s.Paused, s.Period, s.Home, s.Away)
+	return fmt.Sprintf("ScoreboardData: {GameTime: %s, Paused: %t, Period: %s, Home: {%s}, Away: {%s}}", s.GameTime, s.Paused, s.Period, s.Home, s.Away)
 }
 
 
@@ -43,6 +46,6 @@ type GameData struct {
 }
 
 func (g GameData) String() string {
-	return fmt.Sprintf("GameData: {HomeTeam: %s, AwayTeam: %s, Scoreboad: %s}", g.HomeTeam, g.AwayTeam, g.Scoreboard)
+	return fmt.Sprintf("GameData: {HomeTeam: %s, AwayTeam: %s, Scoreboad: {%s}}", g.HomeTeam, g.AwayTeam, g.Scoreboard)
 }
 

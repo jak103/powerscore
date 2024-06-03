@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"os"
 	"scoreboard/internal/ingest_simulator"
 	"scoreboard/internal/models"
 	"scoreboard/internal/serial"
@@ -27,19 +28,29 @@ func main() {
 	defer port.Close()
 
 
-	go ingest_simulator.Start("output.txt", port)
+	go ingest_simulator.Start("trimmed.txt", port)
 	output := make(chan *models.ScoreboardData)
 	go serial.Start(context.TODO(), output, port)
 
-	buffer := make([]*models.ScoreboardData, 1)
+	// buffer := make([]*models.ScoreboardData, 1)
 	for {
 		println("main for")
 		scoreboardData := <-output
-		buffer = append(buffer, scoreboardData)
+		// buffer = append(buffer, scoreboardData)
+		fmt.Println(scoreboardData)
 
-		if len(buffer) > 0 {
-			fmt.Println(buffer)
+		f, err := os.OpenFile("parsed.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+		defer f.Close()
+
+		if err != nil {
+			log.Fatal(err)
 		}
+		if _, err := f.Write([]byte(fmt.Sprintln(scoreboardData))); err != nil {
+			log.Fatal(err)
+	}
+		// if len(buffer) > 0 {
+		// 	fmt.Println(buffer)
+		// }
 	}
 
 }
