@@ -52,7 +52,6 @@ func processPackets(ctx context.Context, dataChannel chan []byte, scoreboardData
 			data := <-dataChannel
 			buffer = append(buffer, data...)
 			if bytes.HasPrefix(buffer, prefix) && len(buffer) >= 45 {
-				// log.Printf("serial.go -- parsing packet '%s'", string(buffer[:45]))
 				scoreboardData := parsePacket(buffer[:45])
 				if scoreboardData != nil {
 					scoreboardDataChannel <- scoreboardData

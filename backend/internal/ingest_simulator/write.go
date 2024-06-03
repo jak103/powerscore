@@ -34,13 +34,13 @@ func Start(data_filepath string, port serial.Port) error {
 	}
 	serialBuffer, err := hex.DecodeString(string(fileBuffer))
 
-	// On Matt's machine, the serial port will drop the first byte and duplicate the second byte.
-	//		Setting the first two bytes to zero works around this issue and ensures no data is lost.
+	// After experiencing an issue where the first byte is dropped and the second is repeated,
+	// this line of code solved that issue because serial.go truncates the first byte received
+	// until the prefix is found.
 	serialBuffer = append([]byte{0x0,0x0}, serialBuffer...)
 
 	if err != nil {
-		println("fails to decode hex")
-		// break
+		println("failed to decode hex")
 	}
 
 	n, err := port.Write(serialBuffer)
