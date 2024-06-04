@@ -9,6 +9,8 @@ import (
 	"go.bug.st/serial"
 )
 
+// Reads hexidecimal data from a file at `data_filepath`. Writes the byte data to the serial port `port`.
+// Reports an error if the file `data_filepath` cannot be read as hexidecimal or data cannot be written to the serial port.
 func Start(data_filepath string, port serial.Port) error {
 	const BUFFER_SIZE = 90
 	file, err := os.Open(data_filepath)
