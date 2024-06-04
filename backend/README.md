@@ -8,7 +8,7 @@ You can use any method to emulate a serial port that works for you, but the foll
 
 1. Get the free 2-week trial of [Virual Serial Port Driver Pro](https://www.virtual-serial-port.org/).
 1. Setup a "loopback" port on COM4.
-  1. Ensure `Baudrate Emulation` is Enabled
+    1. Ensure `Baudrate Emulation` is Enabled
 
 The serial port should now be setup for local simulation.
 
