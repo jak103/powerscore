@@ -7,7 +7,7 @@ import (
 
 type Penalty struct {
 	PlayerNumber string	`json:"player_number"`
-	Time         string `json:"time"`
+	Time         string	`json:"time"`
 }
 
 func (o Penalty) String() string {
@@ -16,9 +16,9 @@ func (o Penalty) String() string {
 }
 
 type TeamData struct {
-	Score       string `json:"score"`
-	ShotsOnGoal string `json:"shots_on_goal"`
-	Penalties   []Penalty `json:"penalties"`
+	Score       string			`json:"score"`
+	ShotsOnGoal string			`json:"shots_on_goal"`
+	Penalties   []Penalty		`json:"penalties"`
 }
 
 func (o TeamData) String() string {
