@@ -137,13 +137,12 @@ func parsePenalties(data []byte) []models.Penalty {
 func parsePenalty(data []byte) *models.Penalty {
 	//Penalty is 5 bytes long. First two describe player number, second two describe time.
 	playerNumber := string(data[0:2])
-	playerNumber = strings.Trim(playerNumber, ":")
-	playerNumber = strings.Replace(playerNumber, ":", "", -1)
+	playerNumber = strings.ReplaceAll(playerNumber, ":", "")
 	if playerNumber == "" {
 		return nil
 	}
 	penalty := models.Penalty{
-		PlayerNumber: string(data[0:2]),
+		PlayerNumber: playerNumber,
 		Time: parsePenaltyTime(data[2:5]),
 	}
 	return &penalty
