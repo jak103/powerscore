@@ -4,6 +4,9 @@
 <template>
   <main>
     <p>404 page not found.</p>
+    <div>
+      <a href="#/entryboard">View Score Keeper Workspace</a>
+    </div>
   </main>
 </template>
 

@@ -6,7 +6,6 @@ import { ref, computed } from 'vue';
 
 const routes = {
   '/': Entryboard,
-  '/entryboard': Entryboard,
   '/editboard': Editboard
 }
 

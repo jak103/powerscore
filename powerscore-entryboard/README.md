@@ -11,3 +11,7 @@ Set API endpoint to "http://localhost:3001/teams" and run json-server with the i
 `npx json-server db.json -p 3001`
 
 You will need to run `npm install json-server` if you've never installed it
+
+# Editboard
+
+Reachable through /editboard, which really means /#/editboard the way this server is configured. Not hooked up to anything, it's pretty much a demo
