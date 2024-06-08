@@ -4,9 +4,6 @@
 <template>
   <main>
     <p>404 page not found.</p>
-    <div>
-      <a href="#/entryboard">Home</a>
-    </div>
   </main>
 </template>
 
