@@ -33,7 +33,7 @@ const optionsAssistTwo = [
 
 <template>
   <div class="q-pa-md q-gutter-sm">
-  <q-btn label="New Goal" color="primary" @click="prompt = true" />
+  <q-btn push class="big-button" label="New Goal" color="primary" @click="prompt = true" />
 
   <q-dialog v-model="prompt" persistent>
     <q-card style="min-width: 350px">
@@ -61,5 +61,7 @@ const optionsAssistTwo = [
 </template>
 
 <style scoped>
-
+.big-button {
+  font-size: 24px;
+}
 </style>
