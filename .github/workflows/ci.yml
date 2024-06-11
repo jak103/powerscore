@@ -9,10 +9,12 @@ on:
 jobs:
   changes:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
     outputs:
       backend: ${{ steps.filter.outputs.backend }}
       frontend: ${{ steps.filter.outputs.frontend }}
-      entryboard: ${{ steps.filter.outputs.powerscore-entryboard }}
+      entryboard: ${{ steps.filter.outputs.entryboard }}
     steps:
     - uses: dorny/paths-filter@v3
       id: filter
