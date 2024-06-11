@@ -1,0 +1,27 @@
+{
+    "teams": [
+    {
+      "id": 0,
+      "name": "No Assignment"
+    },
+    {
+      "id": 1,
+      "name": "Awesome Team",
+      "image": "image_url_here"
+    },
+    {
+      "id": 2,
+      "name": "Really Cool People With A Really Long Name",
+      "image": "image_url_here"
+    },
+    {
+      "id": 3,
+      "name": "Keyboard Warriors",
+      "image": "image_url_here"
+    },
+    {
+      "id": 4,
+      "name": "Parentheticals",
+      "image": "image_url_here"
+    }
+  ]}

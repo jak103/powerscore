@@ -1,51 +1,55 @@
 package models
 
 import (
+	"encoding/json"
 	"fmt"
-	"strings"
 )
 
 type Penalty struct {
-	PlayerNumber string
-	Time         string
+  PlayerNumber string `json:"player_number"`
+  Time         string `json:"time"`
 }
 
-func (p Penalty) String() string {
-	return fmt.Sprintf("Penalty: {PlayerNumber: %s, Time: %s}", strings.Replace(p.PlayerNumber, ":", "", -1), p.Time)
+func (o Penalty) String() string {
+  jsonified, _ := json.Marshal(o)
+  return fmt.Sprint(string(jsonified))
 }
 
 type TeamData struct {
-	Score       string
-	ShotsOnGoal string
-	Penalties   []Penalty
+  Score       string      `json:"score"`
+  ShotsOnGoal string      `json:"shots_on_goal"`
+  Penalties   []Penalty    `json:"penalties"`
 }
 
-func (t TeamData) String() string {
-	return fmt.Sprintf("TeamData: {Score: %s, SOG: %s, Penalties: %s}", t.Score, t.ShotsOnGoal, t.Penalties)
+func (o TeamData) String() string {
+  jsonified, _ := json.Marshal(o)
+  return fmt.Sprint(string(jsonified))
 }
 
 type ScoreboardData struct {
-	GameTime string   `json:"game_time"`
-	Paused   bool     `json:"paused"`
-	Period   string   `json:"period"`
-	Home     TeamData `json:"home"`
-	Away     TeamData `json:"away"`
+  GameTime string   `json:"game_time"`
+  Paused   bool     `json:"paused"`
+  Period   string   `json:"period"`
+  Home     TeamData `json:"home"`
+  Away     TeamData `json:"away"`
 }
 
 
-func (s ScoreboardData) String() string {
-	return fmt.Sprintf("ScoreboardData: {GameTime: %s, Paused: %t, Period: %s, Home: {%s}, Away: {%s}}", s.GameTime, s.Paused, s.Period, s.Home, s.Away)
+func (o ScoreboardData) String() string {
+  jsonified, _ := json.Marshal(o)
+  return fmt.Sprint(string(jsonified))
 }
 
 
 type GameData struct {
-	// TODO Eventually we want to add team logos here
-	HomeTeam   string         `json:"home_team"`
-	AwayTeam   string         `json:"away_team"`
-	Scoreboard ScoreboardData `json:"scoreboard"`
+  // TODO Eventually we want to add team logos here
+  HomeTeam   string         `json:"home_team"`
+  AwayTeam   string         `json:"away_team"`
+  Scoreboard ScoreboardData `json:"scoreboard"`
 }
 
-func (g GameData) String() string {
-	return fmt.Sprintf("GameData: {HomeTeam: %s, AwayTeam: %s, Scoreboad: {%s}}", g.HomeTeam, g.AwayTeam, g.Scoreboard)
+func (o GameData) String() string {
+  jsonified, _ := json.Marshal(o)
+  return fmt.Sprint(string(jsonified))
 }
 

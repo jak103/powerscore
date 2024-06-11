@@ -10,9 +10,6 @@
     <div>
       <a href="#/scorekeeper">View Score Keeper Workspace</a>
     </div>
-    <div>
-      <a href="#/entryboard">View the Entryboard locker-room assignments</a>
-    </div>
   </main>
 </template>
 

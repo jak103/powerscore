@@ -1,0 +1,153 @@
+@font-face {
+  font-family: "alarm";
+  src: url("./alarm-clock.ttf");
+}
+
+@font-face {
+  font-family: "Teko";
+  src: url("./Teko-VariableFont_wght.ttf");
+}
+
+.powerscore {
+  height: 100vh;
+  background: #181818;
+  color: goldenrod;
+  font-family: "alarm", monospace;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Primary Info */
+.primary-info {
+  width: 100%;
+  display: flex;
+  flex: 1 1 0;
+}
+
+.team-score {
+  width: 33.333333333%;
+}
+.team-name {
+  font-size: 5vw;
+  margin-top: 2vw;
+  text-align: center;
+  font-family: Teko, sans-serif;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: darkgray;
+}
+.score {
+  text-align: center;
+  font-size: 10vw;
+  color: firebrick;
+}
+.time {
+  width: 33.333333333%;
+}
+.timer {
+  text-align: right;
+  font-size: 8vw;
+  border: 0.6vw solid rgba(218, 165, 32, 0.17);
+  margin: 1vw 4vw;
+  padding-right: 1.5vw;
+  border-radius: 0.4vw;
+}
+
+.period {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+}
+.period-text {
+  font-family: Teko, sans-serif;
+  color: darkgray;
+  font-size: 4vw;
+  text-transform: uppercase;
+}
+.period-number {
+  font-size: 5vw;
+}
+
+/* Secondary Info */
+.secondary-info {
+  flex: 1 1 0;
+  display: flex;
+}
+
+.penalties {
+  width: 33.333333%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 1vw;
+}
+
+.penalties th{
+font-size: 4vw;
+font-family: Teko, sans-serif;
+font-weight: 400;
+color: darkgray;
+text-transform: uppercase;
+}
+
+.penalties td{
+  font-size: 5.5vw;
+}
+.penalty-player{
+  width: 10vw;
+}
+.penalty-time{
+  width: 16vw;
+  color: firebrick;
+}
+
+.penalties th, .penalties td{
+  padding: .25vw 1.5vw;
+  text-align: right;
+}
+
+.penalty-text {
+  display: flex;
+  font-family: Teko, sans-serif;
+  text-transform: uppercase;
+  gap: 2vw;
+  font-size: 4vw;
+  color: darkgray;
+}
+
+.penalty{
+  padding: 0 6vw;
+  display: flex;
+  gap: 2vw;
+}
+.player{
+  font-size: 4vw;
+}
+
+.shots-on-goal {
+  width: 33.33333333%;
+  display: flex;
+  justify-content: center;
+  column-gap: 6vw;
+  row-gap: 1vw;
+  align-content: flex-end;
+  flex-wrap: wrap;
+}
+.shots{
+  font-size: 6vw;
+}
+
+.shots-on-goal-text{
+  width: 100%;
+  text-align: center;
+  color: darkgray;
+  font-family: Teko, sans-serif;
+  text-transform: uppercase;
+  font-size: 4vw;
+  padding-bottom: 4vw;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
