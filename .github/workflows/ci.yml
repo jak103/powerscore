@@ -23,6 +23,7 @@ jobs:
     - uses: dorny/paths-filter@v3
       id: filter
       with:
+        ref: ${{ github.ref }}
         filters: |
           backend:
             - 'backend/**'
@@ -30,6 +31,7 @@ jobs:
             - 'frontend/**'
           entryboard:
             - 'powerscore-entryboard/**'
+
   backend:
     needs: changes
     if: ${{ needs.changes.outputs.backend == 'true' }}
