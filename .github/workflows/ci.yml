@@ -20,6 +20,7 @@ jobs:
       frontend: ${{ steps.filter.outputs.frontend }}
       entryboard: ${{ steps.filter.outputs.entryboard }}
     steps:
+    - uses: actions/checkoutv4
     - uses: dorny/paths-filter@v3
       id: filter
       with:
