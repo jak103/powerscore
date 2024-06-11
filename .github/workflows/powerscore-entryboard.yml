@@ -20,10 +20,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: [Checkout]
     steps:
-      - name: Use Node.js $NODE_VERSION
+      - name: Use Node.js 20.x
         uses: actions/setup-node@v4
         with:
-          node-version: $NODE_VERSION
+          node-version: 20.x
 
       - name: Run npm ci
         run: npm ci
@@ -60,10 +60,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: [Checkout]
     steps:
-      - name: Use Node.js $NODE_VERSION
+      - name: Use Node.js 20.x
         uses: actions/setup-node@v4
         with:
-          node-version: $NODE_VERSION
+          node-version: 20.x
 
       - name: Run npm ci
         run: npm ci
