@@ -3,12 +3,12 @@ name: 'Powerscore CI/CD Pipeline'
 on:
   push:
     branches:
-      - 'main'
-      - 'develop'
+      - main
+      - develop
   pull_request:
     branches:
-      - 'main'
-      - 'develop'
+      - main
+      - develop
 
 jobs:
   changes:
@@ -20,7 +20,6 @@ jobs:
       frontend: ${{ steps.filter.outputs.frontend }}
       entryboard: ${{ steps.filter.outputs.entryboard }}
     steps:
-    - uses: actions/checkoutv4
     - uses: dorny/paths-filter@v3
       id: filter
       with:
