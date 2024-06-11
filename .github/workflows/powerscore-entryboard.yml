@@ -30,7 +30,7 @@ jobs:
         working-directory: ./frontend
 
       - name: Run npm test
-        run: npm test
+        run: npm run test:unit
         working-directory: ./frontend
 
   Backend:
@@ -74,5 +74,5 @@ jobs:
         working-directory: ./powerscore-entryboard
 
       - name: Run npm test
-        run: npm test
+        run: npm run test:unit
         working-directory: ./powerscore-entryboard
