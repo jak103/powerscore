@@ -1,6 +1,7 @@
 name: 'Powerscore Main and Develop Branch CI/CD'
 
 on:
+  pull_request:
   push:
     branches:
       - main
@@ -86,6 +87,7 @@ jobs:
   Coverage:
     runs-on: ubuntu-latest
     needs: Backend
+    if: github.event_name == 'pull_request'
     steps:
       - uses: fgrosse/go-coverage-report@v1.0.2
         with:
