@@ -51,13 +51,14 @@ jobs:
         working-directory: ./backend
 
       - name: Test
-        run: go test ./... -coverprofile=cover.txt -covermode=atomic -coverpkg=./...
+        run: go test -cover -coverprofile=coverage.txt ./...
         working-directory: ./backend
 
-      - name: Get Go Coverage
-        uses: fgrosse/go-coverage-report@v1.0.2
+      - name: Archive results
+        uses: actions/upload-artifact@v4
         with:
-          coverage-file-name: './backend/coverage.txt'
+          name: go-code-coverage
+          path: ./backend/coverage.txt
 
   Entryboard:
     runs-on: ubuntu-latest
@@ -81,3 +82,11 @@ jobs:
       - name: Run npm test
         run: npm run test:unit
         working-directory: ./powerscore-entryboard
+
+  Coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: fgrosse/go-coverage-report@v1.0.2
+        with:
+          coverage-artifact-name: go-code-coverage
+          coverage-file-name: ./backend/coverage.txt
