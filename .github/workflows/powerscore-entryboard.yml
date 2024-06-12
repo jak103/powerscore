@@ -90,4 +90,4 @@ jobs:
       - uses: fgrosse/go-coverage-report@v1.0.2
         with:
           coverage-artifact-name: go-code-coverage
-          coverage-file-name: ./backend/coverage.txt
+          coverage-file-name: coverage.txt
