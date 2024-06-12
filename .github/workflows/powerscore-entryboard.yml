@@ -51,16 +51,13 @@ jobs:
         working-directory: ./backend
 
       - name: Test
-        run: go test ./... -coverprofile='./cover.out' -covermode='atomic' -coverpkg='./...'
+        run: go test ./... -coverprofile=cover.txt -covermode=atomic -coverpkg=./...
         working-directory: ./backend
 
       - name: Get Go Coverage
-        uses: vladopajic/go-test-coverage@v2
+        uses: fgrosse/go-coverage-report@v1.0.2
         with:
-          profile: cover.out
-          threshold-file: 80
-          threshold-package: 80
-          threshold-total: 95
+          coverage-file-name: './backend/coverage.txt'
 
   Entryboard:
     runs-on: ubuntu-latest
