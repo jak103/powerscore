@@ -28,6 +28,20 @@ const state = reactive({
   awayShotsOnGoal: 24
 })
 
+async function fetchShots() {
+  try {
+    const response = await fetch('http://localhost:8080/api/shots');
+    const shots = await response.json();
+    state.homeShotsOnGoal = shots.home;
+    state.awayShotsOnGoal = shots.away;
+    
+  } catch (error) {
+    console.error('Error fetching scores:', error);
+  }
+}
+
+fetchShots()
+
 </script>
 
 <template>
@@ -40,3 +54,5 @@ const state = reactive({
 
 <style scoped>
 </style>
+
+

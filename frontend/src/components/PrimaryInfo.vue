@@ -10,6 +10,20 @@ const state = reactive({
   awayTeamScore: 2,
 });
 
+async function fetchScores() {
+  try {
+    const response = await fetch('http://localhost:8080/api/score');
+    const scores = await response.json();
+    state.homeTeamScore = scores.home;
+    state.awayTeamScore = scores.away;
+    
+  } catch (error) {
+    console.error('Error fetching scores:', error);
+  }
+}
+
+fetchScores();
+
 </script>
 
 <template>
