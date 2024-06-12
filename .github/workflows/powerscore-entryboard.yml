@@ -51,7 +51,7 @@ jobs:
         working-directory: ./backend
 
       - name: Test
-        run: go test ./... -coverprofile='cover.out' -covermode=atomic -coverpkg=./...
+        run: go test ./... -coverprofile='./cover.out' -covermode='atomic' -coverpkg='./...'
         working-directory: ./backend
 
       - name: Get Go Coverage
