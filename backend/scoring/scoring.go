@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"encoding/json"
 	"log"
 	"net/http"
@@ -35,7 +34,7 @@ var currentShots = Shots{
 var scoreMutex sync.Mutex
 var shotMutex sync.Mutex
 
-const port string = "http://localhost:5173" //This line needs to be adjusted depending on what port the VUE app is running
+const port string = "http://localhost:5174" //This line needs to be adjusted depending on what port the VUE app is running on
 
 func getScore(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", port)
@@ -181,13 +180,4 @@ func main() {
 	}()
 
 	<-stop
-	log.Println("Shutting down the server...")
-
-	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
-	defer cancel()
-
-	if err := server.Shutdown(ctx); err != nil {
-		log.Fatalf("Server shutdown failed: %v", err)
-	}
-	log.Println("Server exited properly")
 }

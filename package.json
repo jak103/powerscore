@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "@vue/compiler-sfc": "^3.4.27",
+    "typescript": "^5.4.5",
     "vue": "^3.4.27"
   }
 }

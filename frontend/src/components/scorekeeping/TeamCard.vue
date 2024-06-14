@@ -2,12 +2,11 @@
 import ScoreCounter from "@/components/scorekeeping/ScoreCounter.vue";
 import placeholderImage from "@/assets/img/hockeyClipart.jpg";
 import ShotsOnGoalCounter from "@/components/scorekeeping/ShotsOnGoalCounter.vue"; // TODO: need to make this dynamically load team logos
-import {defineProps } from 'vue';
 
 defineProps<{
   teamName?: string
   homeTeam?: boolean
-}>()
+}>();
 
 </script>
 
