@@ -3,7 +3,7 @@ import { ref } from 'vue'
 
 // TODO: Make options values dynamic on load
 // TODO: Create event listeners to pop up this form automatically when a penalty is triggered from the rink device
-// TODO: Hook up submit button to the backend API
+// TODO: Hook up submit button in form to the backend API
 const promptPenalty = ref(false)
 
 const offender = ref('')
@@ -32,7 +32,7 @@ const optionsPenalty = [
     <q-btn push class="big-button" label="New Penalty" color="red" @click="promptPenalty = true" />
 
     <q-dialog v-model="promptPenalty" persistent>
-      <q-card style="min-width: 350px">
+      <q-card style="min-width: 350px; max-width: 500px;">
         <q-card-section>
           <div class="text-h6">New Penalty</div>
         </q-card-section>

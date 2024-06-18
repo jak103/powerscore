@@ -2,7 +2,7 @@
 import {ref} from 'vue';
 
 const period = ref(1)
-// TODO: Create a method to poll the rink every so often to synchronize current time.
+// TODO: Create a method to poll the rink every so often to synchronize current time. Websocket might make more sense actually.
 
 </script>
 
