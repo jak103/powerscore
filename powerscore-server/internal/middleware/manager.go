@@ -20,7 +20,7 @@ func Setup(app *fiber.App) {
 	}))
 
 	app.Use(recover.New(recover.Config{
-		EnableStackTrace:  true,
+		EnableStackTrace: true,
 		// StackTraceHandler: appUtils.StackTraceHandler,
 	}))
 
