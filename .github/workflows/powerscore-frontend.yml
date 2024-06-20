@@ -1,9 +1,9 @@
-name: 'Powerscore iPad App CI/CD'
+name: 'Powerscore Frontend CI/CD'
 
 on:
   pull_request:
-    paths:
-      - powerscore-ipad
+    paths: 
+      - frontend
   push:
     branches:
       - main
@@ -13,11 +13,11 @@ env:
   NODE_VERSION: 20.x
 
 jobs:
-  IPadApp:
+  Frontend:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./powerscore-ipad
+        working-directory: ./frontend
     steps:
       - name: Checkout source
         uses: actions/checkout@v4

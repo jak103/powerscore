@@ -1,20 +1,20 @@
-name: 'Powerscore Server CI/CD'
+name: 'Powerscore Backend CI/CD'
 
 on:
   pull_request:
     paths:
-      - ./powerscore-server
+      - backend
   push:
     branches:
       - main
       - develop
 
 jobs:
-  Frontend:
+  Backend:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./powerscore-server
+        working-directory: ./backend
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
@@ -22,9 +22,9 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v4
         with:
-          go-version-file: go.mod
+          go-version-file: ./backend/go.mod
           check-latest: true
-          cache-dependency-path: go.sum
+          cache-dependency-path: ./backend/go.sum
       
       - name: Build
         run: go build -v ./
