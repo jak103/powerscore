@@ -22,9 +22,9 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v4
         with:
-          go-version-file: go.mod
+          go-version-file: ./powerscore-server/go.mod
           check-latest: true
-          cache-dependency-path: go.sum
+          cache-dependency-path: ./powerscore-server/go.sum
       
       - name: Build
         run: go build -v ./
