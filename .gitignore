@@ -38,3 +38,6 @@ yarn-error.log*
 
 # local .env files
 .env.local*
+
+# full game text file
+full_game.txt
