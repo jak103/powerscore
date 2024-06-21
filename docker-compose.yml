@@ -1,0 +1,66 @@
+services:
+  powerscore-frontend:
+    image: powerscore-frontend:latest
+    build: ./frontend
+    container_name: powerscore-frontend
+    working_dir: /powerscore/frontend
+    volumes:
+      - /powerscore/frontend/node_modules
+      - ./frontend:/powerscore/frontend
+    ports:
+      - 9000:9000
+    environment:
+      NODE_ENV: development
+    command: npm run dev
+
+  powerscore-entryboard:
+    image: powerscore-entryboard:latest
+    build: ./powerscore-entryboard
+    container_name: powerscore-entryboard
+    working_dir: /powerscore/entryboard
+    volumes:
+      - /powerscore/entryboard/node_modules
+      - ./powerscore-entryboard:/powerscore/entryboard
+    ports:
+      - 9011:9011
+    environment:
+      NODE_ENV: development
+    command: npm run dev
+
+  powerscore-ipad-app:
+    image: powerscore-ipad-app:latest
+    build: ./powerscore-ipad
+    container_name: powerscore-ipad-app
+    working_dir: /powerscore/app
+    volumes:
+      - /powerscore/app/node_modules
+      - ./powerscore-ipad:/powerscore/app
+    ports:
+      - 9002:9002
+    environment:
+      NODE_ENV: development
+    command: npm run dev
+
+  powerscore-backend:
+    image: powerscore-backend:latest
+    build: ./backend
+    container_name: powerscore-backend
+    working_dir: /powerscore/backend
+    volumes:
+      - /powerscore/backend/tmp
+      - ./backend:/powerscore/backend
+    ports:
+      - 9004:9004
+    command: air -c air/backend.toml
+
+  powerscore-server:
+    image: powerscore-server:latest
+    build: ./powerscore-server
+    container_name: powerscore-server
+    working_dir: /powerscore/server
+    volumes:
+      - /powerscore/server/tmp
+      - ./powerscore-server:/powerscore/server
+    ports:
+      - 9005:9005
+    command: air -c air/powerscore-server.toml

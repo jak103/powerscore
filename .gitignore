@@ -39,5 +39,11 @@ yarn-error.log*
 # local .env files
 .env.local*
 
+# tmp dirs made from air
+tmp
+
+# quasar build
+.quasar
+
 # full game text file
 full_game.txt
