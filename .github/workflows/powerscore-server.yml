@@ -1,0 +1,33 @@
+name: 'Powerscore Server CI/CD'
+
+on:
+  pull_request:
+    paths:
+      - ./powerscore-server
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  Frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./powerscore-server
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version-file: ./powerscore-server/go.mod
+          check-latest: true
+          cache-dependency-path: ./powerscore-server/go.sum
+      
+      - name: Build
+        run: go build -v ./
+
+      - name: Test
+        run: go test -cover -coverprofile=coverage.txt ./...
