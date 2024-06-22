@@ -37,7 +37,7 @@ onMounted( () => {
   refreshTeams()
   setInterval( () => {
     refreshTeams()
-  }, 10000)
+  }, 3000)
 })
 
 function getTeams() : Team[] {
