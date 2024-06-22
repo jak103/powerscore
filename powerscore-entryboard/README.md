@@ -15,3 +15,7 @@ You will need to run `npm install json-server` if you've never installed it
 # Editboard
 
 Reachable through /editboard, which really means /#/editboard the way this server is configured. Not hooked up to anything, it's pretty much a demo
+
+# Unit Testing
+
+In addition to the usual cypress startup, the JSON-server must be active
