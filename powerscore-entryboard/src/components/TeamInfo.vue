@@ -24,7 +24,7 @@ onMounted( () => {
     setTeam()
     setInterval( () => {
     setTeam()
-  }, 10000)
+  }, 3000)
 })
 
 </script>

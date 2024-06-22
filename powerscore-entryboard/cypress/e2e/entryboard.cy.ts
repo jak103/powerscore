@@ -1,6 +1,8 @@
 describe('Did it reach out', () => {
-    it('Attempts to connect to remote server', () => {
+    it('Grabs data from a remote server', () => {
       cy.visit('/')
-      cy.contains('h1', 'You did it!')
+      cy.intercept({ url: '/teams' }).as('request')
+      cy.wait('@request')
+      cy.get('.assignment').should('contain.text', 'Awesome Team')
     })
   })
